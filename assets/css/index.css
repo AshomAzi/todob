@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f4f4f4;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid #1a1a1a;
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.btn-black-sm {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-black-sm:hover {
+    background-color: #333333;
+    text-decoration: none !important;
+}
+
+/* Mobile Menu Button */
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid #1a1a1a;
+    background-color: #f4f4f4;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 1.5rem;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid #1a1a1a;
+    background-color: #f4f4f4;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.badge {
+    display: inline-block;
+    color: #1a1a1a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid #1a1a1a;
+    padding: 0.375rem 0.875rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+}
+
+.hero h1 {
+    font-size: clamp(2.75rem, 6vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
+    color: #1a1a1a;
+}
+
+.hero p {
+    font-size: 1.125rem;
+    color: #4a4a4a;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-main {
+    padding: 1rem 2.25rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.btn-main:hover {
+    background-color: #333333;
+}
+
+.btn-secondary {
+    padding: 1rem 2.25rem;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid #1a1a1a;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #e5e5e5;
+}
+
+/* Features Section */
+.features {
+    padding: 6rem 1.5rem;
+    background-color: #eaeaea;
+}
+
+.features-container {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 4rem;
+    color: #1a1a1a;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 2.5rem 2rem;
+    border: 1px solid #1a1a1a;
+    box-shadow: 4px 4px 0px #1a1a1a;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.card-icon {
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin-bottom: 1.25rem;
+    display: inline-block;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 0.25rem;
+    color: #1a1a1a;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #1a1a1a;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+    .hero-actions {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .mobile-menu.active {
+        display: flex;
+    }
+}

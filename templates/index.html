@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskCore - Minimal Task Management</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">TaskCore.</a>
+
+            <nav class="nav-links">
+                <a href="{% url 'signin' %}">Sign In</a>
+                <a href="{% url 'signup' %}" class="btn-black-sm">Sign Up</a>
+            </nav>
+
+            <button class="menu-btn" id="menu-btn">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="{% url 'signin' %}" style="font-weight: 600;">Sign In</a>
+            <a href="signup.html" class="btn-black-sm" style="text-align: center;">Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="badge">System 01 / Task Manager</span>
+                <h1>Absolute clarity for your daily workflow.</h1>
+                <p>A stripped-down, high-performance task tracker designed for focus. Zero clutter, absolute control,
+                    built for raw utility.</p>
+                <div class="hero-actions">
+                    <a href="signup.html" class="btn-main">Get Started Free</a>
+                    <a href="{% url 'signin' %}" class="btn-secondary">Sign In</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features-container">
+                <h2>Core Architecture</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon">01.</div>
+                        <h3>Instant Creation</h3>
+                        <p>Rapidly capture tasks and thoughts through clean forms without unnecessary transitions or
+                            animation lag.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">02.</div>
+                        <h3>Isolated Data</h3>
+                        <p>Strict user-level data segregation ensures your personal notes remain completely private and
+                            secure.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">03.</div>
+                        <h3>Direct Control</h3>
+                        <p>Execute state changes—complete, modify, or archive items instantly with synchronous server
+                            handling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 TaskCore. All Rights Reserver.
+    </footer>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>

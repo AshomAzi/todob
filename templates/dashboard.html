@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskCore - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="dashboard.html" class="logo">TaskCore.</a>
+            <div class="user-controls">
+                <span class="user-greeting">Welcome, <strong>User</strong></span>
+                <form action="" method="POST" class="logout-form">
+                    <button type="submit" class="btn-logout">Logout</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+
+
+    <main>
+
+        <div id="taskModal" class="modal-overlay">
+            <div class="task-form-card">
+                <div class="modal-header-row">
+                    <h2>Add New Task</h2>
+                    <button id="closeModalBtn" class="btn-close">&times;</button>
+                </div>
+
+                <form action="" method="POST" class="task-form">
+
+                    <div class="form-group">
+                        <label for="title">Task Title</label>
+                        <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="priority">Priority</label>
+                            <select id="priority" name="priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group flex-1">
+                            <label for="due_date">Due Date</label>
+                            <input type="date" id="due_date" name="due_date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description (Optional)</label>
+                        <textarea id="description" name="description" rows="3"
+                            placeholder="Add additional details or notes..."></textarea>
+                    </div>
+
+                    <div class="form-action">
+                        <button type="submit" class="btn-add-task">Create Task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="dashboard-container">
+
+            <section class="dashboard-action-bar">
+                <div class="list-title">
+                    <h3>My Tasks</h3>
+                    <span class="task-count">3 tasks</span>
+                </div>
+                <button id="openModalBtn" class="btn-open-modal">+ Add New Task</button>
+            </section>
+
+            <section class="list-header">
+                <div class="filter-controls">
+                    <a href="?filter=all" class="filter-btn active">All</a>
+                    <a href="?filter=pending" class="filter-btn">Pending</a>
+                    <a href="?filter=completed" class="filter-btn">Completed</a>
+                </div>
+            </section>
+
+            <section class="task-list">
+
+                <div class="task-card">
+                    <div class="task-status">
+                        <form action="" method="POST" class="checkbox-form">
+                            <input type="checkbox" id="task-1" onchange="this.form.submit()">
+                            <label for="task-1" class="custom-checkbox"></label>
+                        </form>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="task-header-row">
+                            <h4 class="task-title">Build Django ORM Models</h4>
+                            <span class="priority-badge priority-high">High</span>
+                        </div>
+                        <p class="task-desc">Set up Task model with foreign key to User, priority choices, and due date
+                            field.</p>
+                        <div class="task-meta">
+                            <span class="due-tag">📅 Due: Tomorrow</span>
+                        </div>
+                    </div>
+
+                    <div class="task-actions">
+                        <a href="#" class="btn-action edit">Edit</a>
+                        <form action="" method="POST" class="inline-form">
+                            <button type="submit" class="btn-action delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-status">
+                        <form action="" method="POST" class="checkbox-form">
+                            <input type="checkbox" id="task-2" onchange="this.form.submit()">
+                            <label for="task-2" class="custom-checkbox"></label>
+                        </form>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="task-header-row">
+                            <h4 class="task-title">Configure Authentication Views</h4>
+                            <span class="priority-badge priority-medium">Medium</span>
+                        </div>
+                        <p class="task-desc">Implement LoginView, LogoutView, and custom signup view logic.</p>
+                        <div class="task-meta">
+                            <span class="due-tag">📅 Due: Oct 31, 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="task-actions">
+                        <a href="#" class="btn-action edit">Edit</a>
+                        <form action="" method="POST" class="inline-form">
+                            <button type="submit" class="btn-action delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="task-card completed">
+                    <div class="task-status">
+                        <form action="" method="POST" class="checkbox-form">
+                            <input type="checkbox" id="task-3" checked onchange="this.form.submit()">
+                            <label for="task-3" class="custom-checkbox"></label>
+                        </form>
+                    </div>
+
+                    <div class="task-details">
+                        <div class="task-header-row">
+                            <h4 class="task-title">Design Frontend Templates</h4>
+                            <span class="priority-badge priority-low">Low</span>
+                        </div>
+                        <p class="task-desc">Create HTML/CSS for landing page, sign in, sign up, and dashboard.</p>
+                        <div class="task-meta">
+                            <span class="due-tag">✓ Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="task-actions">
+                        <a href="#" class="btn-action edit">Edit</a>
+                        <form action="" method="POST" class="inline-form">
+                            <button type="submit" class="btn-action delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TaskCore. Pure Backend Engineering.
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

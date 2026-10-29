@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #f4f4f4;
+    color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    border-bottom: 1px solid #1a1a1a;
+    background-color: #f4f4f4;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+.nav-links {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Main Wrapper */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+/* Form Card */
+.auth-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem 2rem;
+    border: 1px solid #1a1a1a;
+    box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.auth-card h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+}
+
+.auth-card p.subtitle {
+    font-size: 0.875rem;
+    color: #555555;
+    margin-bottom: 2rem;
+}
+
+/* Error Message Box (for Django messages/errors) */
+.error-box {
+    background-color: #fef2f2;
+    border: 1px solid #1a1a1a;
+    color: #991b1b;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #f4f4f4;
+    border: 1px solid #1a1a1a;
+    color: #1a1a1a;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-group input:focus {
+    background-color: #ffffff;
+    border-width: 2px;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: 1px solid #1a1a1a;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+    background-color: #333333;
+}
+
+/* Footer Text */
+.auth-footer {
+    margin-top: 1.75rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #555555;
+}
+
+.auth-footer a {
+    font-weight: 700;
+    color: #1a1a1a;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #1a1a1a;
+    background-color: #1a1a1a;
+    color: #f4f4f4;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
