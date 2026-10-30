@@ -30,7 +30,7 @@
 
         <div class="mobile-menu" id="mobile-menu">
             <a href="{% url 'signin' %}" style="font-weight: 600;">Sign In</a>
-            <a href="signup.html" class="btn-black-sm" style="text-align: center;">Sign Up</a>
+            <a href="{% url 'signup' %}" class="btn-black-sm" style="text-align: center;">Sign Up</a>
         </div>
     </header>
 
@@ -42,7 +42,7 @@
                 <p>A stripped-down, high-performance task tracker designed for focus. Zero clutter, absolute control,
                     built for raw utility.</p>
                 <div class="hero-actions">
-                    <a href="signup.html" class="btn-main">Get Started Free</a>
+                    <a href="{% url 'signup' %}" class="btn-main">Get Started Free</a>
                     <a href="{% url 'signin' %}" class="btn-secondary">Sign In</a>
                 </div>
             </div>
