@@ -27,7 +27,7 @@
             <p class="subtitle">Get started with your personal task dashboard</p>
 
             <form action="" method="POST">
-
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Choose a username" required
@@ -54,7 +54,11 @@
 
                 <button type="submit" class="btn-submit">Create Account</button>
             </form>
-
+            <div class="error" style="color: red;">
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+            </div>
             <div class="auth-footer">
                 Already have an account? <a href="{% url 'signin' %}">Sign In</a>
             </div>
