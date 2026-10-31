@@ -12,31 +12,29 @@ def signup(request):
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
 
-        if username is not None and email is not None:
-            if User.objects.filter(username=username).exists():
-                messages.error(request, f"{username} is already taken!")
-                return redirect("signup")
-            if User.objects.filter(email=email).exists():
-                messages.error(request, f"{email} is already taken!")
-                return redirect("signup")
-            if len(password1) < 8:
-                messages.error(request, "Password must be at least 8 characters")
-                return redirect("signup")
-            
-            if password1 != password2:
-                messages.error(request, "Password does not match")
-                return redirect("signup")
-            
-            user = User.objects.create_user(
-                username=username,
-                email=email,
-                password=password1
-            )
-            user.save()
-            return redirect("signin")
-        else:
+        if not username or not email or not password1 or not password2:
             messages.error(request, "Fields cannot be empty!")
             return redirect("signup")
-
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "username is already taken!")
+            return redirect("signup")
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "email is already taken!")
+            return redirect("signup")
+        if len(password1) < 8:
+            messages.error(request, "Password must be at least 8 characters")
+            return redirect("signup")
+        
+        if password1 != password2:
+            messages.error(request, "Password does not match")
+            return redirect("signup")
+        
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=password1
+        )
+        user.save()
+        return redirect("signin")
     else:
         return render(request, "signup.html")
