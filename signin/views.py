@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -15,3 +15,7 @@ def signin(request):
             return redirect("dashboard")
     else:
         return render(request, "signin.html")
+
+def signout(request):
+    logout(request)
+    return redirect("signin")

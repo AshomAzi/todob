@@ -17,7 +17,8 @@
             <a href="{% url 'dashboard' %}" class="logo">TaskCore.</a>
             <div class="user-controls">
                 <span class="user-greeting">Welcome, <strong>{{ user.username }}</strong></span>
-                <form action="" method="POST" class="logout-form">
+                <form action="{% url 'signout' %}" method="post" class="logout-form">
+                    {% csrf_token %}
                     <button type="submit" class="btn-logout">Logout</button>
                 </form>
             </div>
