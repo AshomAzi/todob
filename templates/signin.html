@@ -26,8 +26,8 @@
             <h1>Sign In</h1>
             <p class="subtitle">Access your task dashboard</p>
 
-            <form action="" method="POST">
-
+            <form action="{% url 'signin' %}" method="POST">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Enter your username" required
