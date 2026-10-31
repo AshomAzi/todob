@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("home.urls")),
     path("signin", include("signin.urls")),
     path("signup", include("signup.urls")),
+    path("dashboard", include("dashboard.urls"))
 ]
