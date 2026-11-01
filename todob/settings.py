@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'signin.apps.SigninConfig',
     'signup.apps.SignupConfig',
+    'dashboard.apps.DashboardConfig'
 ]
 
 MIDDLEWARE = [

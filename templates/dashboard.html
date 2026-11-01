@@ -36,8 +36,8 @@
                     <button id="closeModalBtn" class="btn-close">&times;</button>
                 </div>
 
-                <form action="" method="POST" class="task-form">
-
+                <form action="{% url 'dashboard' %}" method="POST" class="task-form">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="title">Task Title</label>
                         <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
@@ -90,10 +90,12 @@
             </section>
 
             <section class="task-list">
-
+                {% if tasks %}
+                {% for task in tasks %}
                 <div class="task-card">
                     <div class="task-status">
-                        <form action="" method="POST" class="checkbox-form">
+                        <form action="{% url 'dashboard' %}" method="POST" class="checkbox-form">
+                            {% csrf_token %}
                             <input type="checkbox" id="task-1" onchange="this.form.submit()">
                             <label for="task-1" class="custom-checkbox"></label>
                         </form>
@@ -101,13 +103,12 @@
 
                     <div class="task-details">
                         <div class="task-header-row">
-                            <h4 class="task-title">Build Django ORM Models</h4>
-                            <span class="priority-badge priority-high">High</span>
+                            <h4 class="task-title">{{ task.title }}</h4>
+                            <span class="priority-badge priority-high">{{ task.get_prority_display}}</span>
                         </div>
-                        <p class="task-desc">Set up Task model with foreign key to User, priority choices, and due date
-                            field.</p>
+                        <p class="task-desc">{{ task.description }}</p>
                         <div class="task-meta">
-                            <span class="due-tag">📅 Due: Tomorrow</span>
+                            <span class="due-tag">📅 Due: {{ task.due_date }}</span>
                         </div>
                     </div>
 
@@ -118,60 +119,10 @@
                         </form>
                     </div>
                 </div>
-
-                <div class="task-card">
-                    <div class="task-status">
-                        <form action="" method="POST" class="checkbox-form">
-                            <input type="checkbox" id="task-2" onchange="this.form.submit()">
-                            <label for="task-2" class="custom-checkbox"></label>
-                        </form>
-                    </div>
-
-                    <div class="task-details">
-                        <div class="task-header-row">
-                            <h4 class="task-title">Configure Authentication Views</h4>
-                            <span class="priority-badge priority-medium">Medium</span>
-                        </div>
-                        <p class="task-desc">Implement LoginView, LogoutView, and custom signup view logic.</p>
-                        <div class="task-meta">
-                            <span class="due-tag">📅 Due: Oct 31, 2026</span>
-                        </div>
-                    </div>
-
-                    <div class="task-actions">
-                        <a href="#" class="btn-action edit">Edit</a>
-                        <form action="" method="POST" class="inline-form">
-                            <button type="submit" class="btn-action delete">Delete</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="task-card completed">
-                    <div class="task-status">
-                        <form action="" method="POST" class="checkbox-form">
-                            <input type="checkbox" id="task-3" checked onchange="this.form.submit()">
-                            <label for="task-3" class="custom-checkbox"></label>
-                        </form>
-                    </div>
-
-                    <div class="task-details">
-                        <div class="task-header-row">
-                            <h4 class="task-title">Design Frontend Templates</h4>
-                            <span class="priority-badge priority-low">Low</span>
-                        </div>
-                        <p class="task-desc">Create HTML/CSS for landing page, sign in, sign up, and dashboard.</p>
-                        <div class="task-meta">
-                            <span class="due-tag">✓ Completed</span>
-                        </div>
-                    </div>
-
-                    <div class="task-actions">
-                        <a href="#" class="btn-action edit">Edit</a>
-                        <form action="" method="POST" class="inline-form">
-                            <button type="submit" class="btn-action delete">Delete</button>
-                        </form>
-                    </div>
-                </div>
+                {% endfor %}
+                {% else %}
+                <p>No task available, create one.</p>
+                {% endif %}
 
             </section>
         </div>
