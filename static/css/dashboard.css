@@ -234,6 +234,12 @@ main {
     gap: 0.5rem;
 }
 
+.form-errors {
+    color: #991b1b;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
 .form-group label {
     font-size: 0.8rem;
     font-weight: 700;
@@ -461,6 +467,10 @@ main {
     background-color: #ffffff;
     cursor: pointer;
     transition: background 0.2s;
+}
+
+.btn-action.edit {
+    color: inherit;
 }
 
 .btn-action.edit:hover {

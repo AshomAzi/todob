@@ -29,44 +29,61 @@
 
     <main>
 
-        <div id="taskModal" class="modal-overlay">
+        <div id="taskModal" class="modal-overlay{% if modal_open %} active{% endif %}">
             <div class="task-form-card">
                 <div class="modal-header-row">
-                    <h2>Add New Task</h2>
+                    <h2 id="taskModalTitle">{% if editing_task %}Edit Task{% else %}Add New Task{% endif %}</h2>
                     <button id="closeModalBtn" class="btn-close">&times;</button>
                 </div>
 
-                <form action="{% url 'dashboard' %}" method="POST" class="task-form">
+                <form id="taskForm"
+                    action="{% if editing_task %}{% url 'edit_task' editing_task.id %}{% else %}{% url 'dashboard' %}{% endif %}"
+                    data-create-url="{% url 'dashboard' %}" method="POST" class="task-form">
                     {% csrf_token %}
+                    {% if task_form.errors %}
+                    <div class="form-errors" role="alert">
+                        {% for field in task_form %}
+                        {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                        {% endfor %}
+                        {% for error in task_form.non_field_errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     <div class="form-group">
                         <label for="title">Task Title</label>
-                        <input type="text" id="title" name="title" placeholder="What needs to be done?" required>
+                        <input type="text" id="title" name="title"
+                            value="{{ task_form.title.value|default_if_none:'' }}"
+                            placeholder="What needs to be done?" required>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group flex-1">
                             <label for="priority">Priority</label>
                             <select id="priority" name="priority">
-                                <option value="low">Low</option>
-                                <option value="medium" selected>Medium</option>
-                                <option value="high">High</option>
+                                <option value="low"{% if task_form.priority.value == "low" %} selected{% endif %}>Low</option>
+                                <option value="medium"{% if task_form.priority.value == "medium" or not task_form.is_bound and not editing_task %} selected{% endif %}>Medium</option>
+                                <option value="high"{% if task_form.priority.value == "high" %} selected{% endif %}>High</option>
                             </select>
                         </div>
 
                         <div class="form-group flex-1">
                             <label for="due_date">Due Date</label>
-                            <input type="date" id="due_date" name="due_date">
+                            <input type="date" id="due_date" name="due_date"
+                                value="{% if task_form.is_bound %}{{ task_form.due_date.value|default_if_none:'' }}{% else %}{{ task_form.due_date.value|date:'Y-m-d' }}{% endif %}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description (Optional)</label>
                         <textarea id="description" name="description" rows="3"
-                            placeholder="Add additional details or notes..."></textarea>
+                            placeholder="Add additional details or notes...">{{ task_form.description.value|default_if_none:'' }}</textarea>
                     </div>
 
                     <div class="form-action">
-                        <button type="submit" class="btn-add-task">Create Task</button>
+                        <button id="taskSubmitBtn" type="submit" class="btn-add-task">{% if editing_task %}Save Changes{% else %}Create Task{% endif %}</button>
                     </div>
                 </form>
             </div>
@@ -76,7 +93,7 @@
             <section class="dashboard-action-bar">
                 <div class="list-title">
                     <h3>My Tasks</h3>
-                    <span class="task-count">3 tasks</span>
+                    <span class="task-count">{{ tasks.count }} task{{ tasks.count|pluralize }}</span>
                 </div>
                 <button id="openModalBtn" class="btn-open-modal">+ Add New Task</button>
             </section>
@@ -104,7 +121,7 @@
                     <div class="task-details">
                         <div class="task-header-row">
                             <h4 class="task-title">{{ task.title }}</h4>
-                            <span class="priority-badge priority-high">{{ task.get_priority_display}}</span>
+                            <span class="priority-badge priority-{{ task.priority }}">{{ task.get_priority_display }}</span>
                         </div>
                         <p class="task-desc">{{ task.description }}</p>
                         <div class="task-meta">
@@ -113,7 +130,11 @@
                     </div>
 
                     <div class="task-actions">
-                        <a href="#" class="btn-action edit">Edit</a>
+                        <a href="{% url 'edit_task' task.id %}" class="btn-action edit"
+                            data-title="{{ task.title }}"
+                            data-description="{{ task.description }}"
+                            data-due-date="{{ task.due_date|date:'Y-m-d' }}"
+                            data-priority="{{ task.priority }}">Edit</a>
                         <form action="{% url 'delete_task' task.id %}" method="post" class="inline-form">
                             {% csrf_token %}
                             <button type="submit" class="btn-action delete">Delete</button>
