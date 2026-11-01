@@ -104,7 +104,7 @@
                     <div class="task-details">
                         <div class="task-header-row">
                             <h4 class="task-title">{{ task.title }}</h4>
-                            <span class="priority-badge priority-high">{{ task.get_prority_display}}</span>
+                            <span class="priority-badge priority-high">{{ task.get_priority_display}}</span>
                         </div>
                         <p class="task-desc">{{ task.description }}</p>
                         <div class="task-meta">
@@ -114,7 +114,8 @@
 
                     <div class="task-actions">
                         <a href="#" class="btn-action edit">Edit</a>
-                        <form action="" method="POST" class="inline-form">
+                        <form action="{% url 'delete_task' task.id %}" method="post" class="inline-form">
+                            {% csrf_token %}
                             <button type="submit" class="btn-action delete">Delete</button>
                         </form>
                     </div>
