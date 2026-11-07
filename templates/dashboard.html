@@ -110,13 +110,6 @@
                 {% if tasks %}
                 {% for task in tasks %}
                 <div class="task-card">
-                    <div class="task-status">
-                        <form action="{% url 'dashboard' %}" method="POST" class="checkbox-form">
-                            {% csrf_token %}
-                            <input type="checkbox" id="task-1" onchange="this.form.submit()">
-                            <label for="task-1" class="custom-checkbox"></label>
-                        </form>
-                    </div>
 
                     <div class="task-details">
                         <div class="task-header-row">
